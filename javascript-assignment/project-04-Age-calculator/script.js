@@ -1,13 +1,22 @@
-let marks = 75;
-
-if (marks >= 80) {
-  console.log("Your Grade: A+");
-} else if (marks >= 70) {
-  console.log("Your Grade: A");
-} else if (marks >= 60) {
-  console.log("Your Grade: B");
-} else if (marks >= 50) {
-  console.log("Your Grade: C");
-} else {
-  console.log("Your Grade: Fail");
-}
+const dobInput = document.querySelector("#dob");
+const calculateBtn = document.querySelector("#calculateBtn");
+const result = document.querySelector("#result");
+calculateBtn.addEventListener("click", function () {
+    const dob = dobInput.value;
+    if (dob === "") {
+        result.textContent = "Please select your date of birth.";
+        return;
+    }
+    const birthDate = new Date(dob);
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDifference = today.getMonth() - birthDate.getMonth();
+    if (
+        monthDifference < 0 ||
+        (monthDifference === 0 &&
+        today.getDate() < birthDate.getDate())
+    ) {
+        age--;
+    }
+    result.textContent = `Your Age: ${age} Years`;
+});
