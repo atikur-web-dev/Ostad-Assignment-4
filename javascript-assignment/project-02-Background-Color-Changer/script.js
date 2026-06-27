@@ -1,11 +1,24 @@
-let name = "Ostad";
-let age = 20;
-let isStudent = true;
-let salary = null;
-let phone;
 
-console.log(typeof name);      
-console.log(typeof age);      
-console.log(typeof isStudent); 
-console.log(typeof salary);    
-console.log(typeof phone);     
+const button = document.querySelector("#changeColorBtn");
+
+const colorCode = document.querySelector("#colorCode");
+
+
+function getRandomNumber() {
+    return Math.floor(Math.random() * 256);
+}
+
+function generateRandomColor() {
+    const red = getRandomNumber();
+    const green = getRandomNumber();
+    const blue = getRandomNumber();
+    return `rgb(${red}, ${green}, ${blue})`;
+}
+
+
+
+button.addEventListener("click", function () {
+    const randomColor = generateRandomColor();
+    document.body.style.backgroundColor = randomColor;
+    colorCode.textContent = `Current Color: ${randomColor}`;
+});
